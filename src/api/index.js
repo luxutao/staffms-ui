@@ -9,4 +9,21 @@ export default {
     adduser:host + '/api/auth/adduser',
     deluser:host + '/api/auth/deluser',
     resetpassword:host + '/api/auth/resetpassword',
+
+    getcompanys:host + '/api/company/getcompanys',
+    addcompany:host + '/api/company/addcompany',
+    delcompany:host + '/api/company/delcompany',
+    changecompany:host + '/api/company/changecompany',
+
+    gettitles:host + '/api/job/gettitles',
+    getjobs:host + '/api/job/getjobs',
+    addjob:host + '/api/job/addjob',
+    deljob:host + '/api/job/deljob',
+
+    getOrganization:host + '/api/department/getOrganization',
+    getleaders:host + '/api/department/getleaders',
+    getdeparts:host + '/api/department/getdeparts',
+    adddepart:host + '/api/department/adddepart',
+    deldepart:host + '/api/department/deldepart',
+    getstaffs:host + '/api/department/getstaffs',
 }

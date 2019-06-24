@@ -6,6 +6,10 @@ import NavHome from '@/components/NavHome'
 
 import Login from '../views/login'
 import Authusers from '../views/authusers'
+import Companys from '../views/companys'
+import Jobs from '../views/jobs'
+import Department from '../views/departments'
+
 Vue.use(Router)
 
 
@@ -30,9 +34,28 @@ export default new Router({
     },
     {
       path: '/',
+      name: '部门管理',
+      component: NavHome,
+      iconCls: 'fa fa-modx',
+      children: [
+        { path: '/departs', component: Department, name: '部门管理' },
+      ]
+    },
+    {
+      path: '/',
+      name: '模块设置',
+      component: NavHome,
+      iconCls: 'fa fa-coffee',
+      children: [
+        { path: '/companys', component: Companys, name: '公司管理' },
+        { path: '/jobs', component: Jobs, name: '职位管理' },
+      ]
+    },
+    {
+      path: '/',
       name: '系统设置',
       component: NavHome,
-      iconCls: 'fa fa-cogs',
+      iconCls: 'fa fa-wrench',
       children: [
         { path: '/authusers', component: Authusers, name: '账号管理' },
       ]

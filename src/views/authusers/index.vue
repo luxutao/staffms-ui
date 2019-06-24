@@ -6,7 +6,7 @@
         <el-col :span="12">
           <el-form :inline="true" :model="formInline" class="demo-form-inline" :rules="rules" ref="formInline">
             <el-form-item label="用户名" prop="username">
-              <el-input v-model="formInline.username" placeholder="username"></el-input>
+              <el-input v-model="formInline.username" placeholder="请输入"></el-input>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="searchUsers('formInline')">查 询</el-button>
@@ -50,13 +50,13 @@
 
     <el-dialog title="添加用户" :visible.sync="adduserVisible" width="30%" center>
       <el-form :model="addUserForm" status-icon :rules="addUserRules" ref="addUserForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="用户名" prop="username">
+        <el-form-item label="用户名" prop="username" style="padding-bottom: 20px">
           <el-input v-model.number="addUserForm.username"></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="pass">
+        <el-form-item label="密码" prop="pass" style="padding-bottom: 20px">
           <el-input type="password" v-model="addUserForm.pass" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="确认密码" prop="checkPass">
+        <el-form-item label="确认密码" prop="checkPass" style="padding-bottom: 20px">
           <el-input type="password" v-model="addUserForm.checkPass" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="是否激活" prop="checkActive">
@@ -142,7 +142,7 @@
                 newpassword: this.resetPassForm.pass
               }
             }).then(res => {
-              this.$message({type:"info",message:"修改成功"});
+              this.$message({type:"success",message:"修改成功"});
               this.dialogFormVisible = false;
             })
           } else {
@@ -166,7 +166,7 @@
                 is_active: this.addUserForm.active
               }
             }).then(res => {
-              this.$message({type:"info",message:"添加成功"});
+              this.$message({type:"success",message:"添加成功"});
               this.adduserVisible = false;
               this.resetaddUser('addUserForm');
               this.getUsers();
