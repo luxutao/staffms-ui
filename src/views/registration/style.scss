@@ -1,0 +1,18 @@
+table,table tr th, table tr td { border:1px solid #edeff0; }
+table { width: 100%; min-height: 25px; line-height: 25px; text-align: center; border-collapse: collapse; padding:2px;}  
+.el-input /deep/ .el-input__inner {
+    width: 100%;
+    overflow:hidden;
+    border:none
+}
+.el-select /deep/ .el-input__inner {
+    width: 100%;
+    overflow:hidden;
+    border:none
+}
+.el-form /deep/ .el-form-item {
+    margin-bottom: 0px;
+}
+.el-form-item /deep/ .el-form-item__content {
+    margin-left: 0px !important;
+}

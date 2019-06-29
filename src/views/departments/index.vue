@@ -153,7 +153,7 @@
         })
       },
       getStaffs() {
-        http(api.getstaffs, {}).then(res => {
+        http(api.getEasystaffs, {}).then(res => {
           this.staffs = res.data;
         }).catch(error => {
           console.log(error)

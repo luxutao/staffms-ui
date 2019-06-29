@@ -5,10 +5,12 @@ import NotFound from '@/components/404'
 import NavHome from '@/components/NavHome'
 
 import Login from '../views/login'
+import Registration from '../views/registration'
 import Authusers from '../views/authusers'
 import Companys from '../views/companys'
 import Jobs from '../views/jobs'
 import Department from '../views/departments'
+import Staff from '../views/staffs'
 
 Vue.use(Router)
 
@@ -31,6 +33,21 @@ export default new Router({
       name: '登录',
       component: Login,
       hidden: true
+    },
+    {
+      path: '/registration',
+      name: '入职登记表',
+      component: Registration,
+      hidden: true
+    },
+    {
+      path: '/',
+      name: '员工管理',
+      component: NavHome,
+      iconCls: 'fa fa-users',
+      children: [
+        { path: '/staffs', component: Staff, name: '员工管理' },
+      ]
     },
     {
       path: '/',

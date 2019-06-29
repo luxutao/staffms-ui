@@ -25,5 +25,8 @@ export default {
     getdeparts:host + '/api/department/getdeparts',
     adddepart:host + '/api/department/adddepart',
     deldepart:host + '/api/department/deldepart',
-    getstaffs:host + '/api/department/getstaffs',
+    
+    getEasystaffs:host + '/api/staff/getEasystaffs',
+    staffRegistration:host + '/api/staff/staffRegistration',
+    getStaffs:host + '/api/staff/getStaffs',
 }
