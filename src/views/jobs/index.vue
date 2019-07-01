@@ -35,6 +35,10 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-col :span="24" align=right style="margin-top: 20px">
+      <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="formInline.page" :page-sizes="[10, 20, 30, 50]" :page-size="formInline.size" layout="sizes, prev, pager, next" :total="linetotal">
+      </el-pagination>
+    </el-col>
 
     <el-dialog title="添加职位" :visible.sync="addjobVisible" width="30%" center>
       <el-form :model="addJobForm" status-icon :rules="addJobRules" ref="addJobForm" label-width="100px" class="demo-ruleForm">
@@ -76,6 +80,7 @@
           page: 1,
           size: 10
         },
+        linetotal:0,
         jobsTable: [],
         titles: [],
         addjobVisible: false,
@@ -113,7 +118,8 @@
         http(api.getjobs, {
           params: this.formInline
         }).then(res => {
-          this.jobsTable = res.data;
+          this.jobsTable = res.data.data;
+          this.linetotal = res.data.total;
         }).catch(error => {
           console.log(error)
         })
@@ -165,6 +171,15 @@
             return false;
           }
         });
+      },
+      handleSizeChange(val) {
+        this.formInline.size = val;
+        this.formInline.page = 1;
+        this.getJobs();
+      },
+      handleCurrentChange(page) {
+        this.formInline.page = page;
+        this.getJobs();
       }
     },
     mounted() {
