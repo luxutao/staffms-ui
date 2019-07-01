@@ -29,4 +29,5 @@ export default {
     getEasystaffs:host + '/api/staff/getEasystaffs',
     staffRegistration:host + '/api/staff/staffRegistration',
     getStaffs:host + '/api/staff/getStaffs',
+    getChartdata:host + '/api/staff/getChartdata',
 }

@@ -12,6 +12,11 @@ import router from './router/index'
 Vue.config.productionTip = false
 import ECharts from 'vue-echarts/components/ECharts'
 import 'echarts/lib/chart/bar'
+import 'echarts/lib/chart/pie'
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/component/legend'
+import 'echarts/lib/component/legendScroll'
+import 'echarts/lib/component/title'
 Vue.component('chart', ECharts)
 
 Vue.use(ElementUI)

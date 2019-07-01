@@ -11,6 +11,8 @@ import Companys from '../views/companys'
 import Jobs from '../views/jobs'
 import Department from '../views/departments'
 import Staff from '../views/staffs'
+import Staffdis from '../views/staffsdis'
+import Staffdetail from '../views/staffdetail'
 
 Vue.use(Router)
 
@@ -47,6 +49,8 @@ export default new Router({
       iconCls: 'fa fa-users',
       children: [
         { path: '/staffs', component: Staff, name: '员工管理' },
+        { path: '/staffsdis', component: Staffdis, name: '员工分布' },
+        { path: '/staffsdetail', component: Staffdetail, name: '员工详情' },
       ]
     },
     {

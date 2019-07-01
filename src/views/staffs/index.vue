@@ -25,7 +25,7 @@
       <el-table-column align="center" prop="leader" label="直属上级" width="180"></el-table-column>
       <el-table-column align="center" label="操作">
         <template slot-scope="scope">
-          <el-button type="text" size="small">删除</el-button>
+          <el-button type="text" size="small" @click="showDetail(scope.row)">查看详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -71,6 +71,14 @@
       handleCurrentChange(page) {
         this.formInline.page = page;
         this.getStaffs();
+      },
+      showDetail(row) {
+        this.$router.push({
+          name: '员工详情',
+          query: {
+            sid: row.id
+          }
+        })
       }
     },
     mounted() {
