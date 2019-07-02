@@ -13,6 +13,7 @@ import Department from '../views/departments'
 import Staff from '../views/staffs'
 import Staffdis from '../views/staffsdis'
 import Staffdetail from '../views/staffdetail'
+import Homepage from '../views/homepage'
 
 Vue.use(Router)
 
@@ -44,13 +45,23 @@ export default new Router({
     },
     {
       path: '/',
+      name: '',
+      component: NavHome,
+      iconCls: 'fa fa-home',
+      leaf: true,
+      children: [
+        { path: '/homepage', component: Homepage, name: '首页'}
+      ]
+    },
+    {
+      path: '/',
       name: '员工管理',
       component: NavHome,
       iconCls: 'fa fa-users',
       children: [
         { path: '/staffs', component: Staff, name: '员工管理' },
         { path: '/staffsdis', component: Staffdis, name: '员工分布' },
-        { path: '/staffsdetail', component: Staffdetail, name: '员工详情' },
+        { path: '/staffsdetail', component: Staffdetail, name: '员工详情', hidden: true },
       ]
     },
     {

@@ -1,0 +1,51 @@
+
+.total-layout {
+    margin-top: 20px;
+}
+.total-frame {
+    background: rgb(10, 92, 41);
+    height: 100px;
+    width: 100%;
+    display: -moz-box;/*兼容Firefox*/
+    display: -webkit-box;/*兼容FSafari、Chrome*/
+
+    -moz-box-align: center;/*兼容Firefox*/
+    -webkit-box-align: center;/*兼容FSafari、Chrome */
+
+    -moz-box-pack: center;/*兼容Firefox*/
+    -webkit-box-pack: center;/*兼容FSafari、Chrome */
+}
+.total-icon {
+    color:#fff;
+}
+.total-title {
+    position: relative;
+    font-size: 16px;
+    color: #606266;
+}
+.total-value {
+    position: relative;
+    font-size: 18px;
+    color: #606266;
+}
+.box-card /deep/ .el-card__body {
+    padding: 0px;
+}
+.infinite-list {
+    height: 250px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: auto;
+}
+.infinite-list .infinite-list-item {
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    // justify-content: center;
+    height: 50px;
+    // background: #e8f3fe;
+    margin: 10px;
+    border-bottom: 1px solid #e8f3fe;
+    // color: #7dbcfc;
+}

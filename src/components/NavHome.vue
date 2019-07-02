@@ -45,8 +45,9 @@
 			<section class="content-container">
 				<div class="grid-content bg-purple-light">
 					<el-col :span="24" class="breadcrumb-container">
-						<strong class="title">{{$route.name}}</strong>
-						<el-breadcrumb separator="/" class="breadcrumb-inner">
+						<el-page-header @back="goBack" :content="$route.name" style="width: 50%;float: left;"></el-page-header>
+						<!-- <strong class="title">{{$route.name}}</strong> -->
+						<el-breadcrumb separator="/" class="breadcrumb-inner" style="line-height: 24px">
 							<el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
 								{{ item.name }}
 							</el-breadcrumb-item>
@@ -72,6 +73,9 @@
 			}
 		},
 		methods: {
+			goBack() {
+				this.$router.back(-1);
+			},
 			onSubmit() {
 				console.log('submit!');
 			},
