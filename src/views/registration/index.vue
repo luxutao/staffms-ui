@@ -238,8 +238,12 @@
                   <el-input type="text" :disabled="true"></el-input>
                 </el-form-item>
               </td>
-              <td class="xl71"></td>
-              <td class="xl71"></td>
+              <td class="xl71">绩效奖金</td>
+              <td class="xl71">
+                <el-form-item>
+                  <el-input type="text" :disabled="true"></el-input>
+                </el-form-item>
+              </td>
               <td class="xl71"></td>
               <td class="xl71"></td>
               <td class="xl71"></td>

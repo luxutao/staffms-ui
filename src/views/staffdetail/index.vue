@@ -4,7 +4,6 @@
     <el-col :span="5" :offset="2">
       <el-image style="width: 100px; height: 100px" :src="url" :fit="fit"></el-image>
     </el-col>
-    <!-- <el-col :span="24"><el-divider></el-divider></el-col> -->
     <el-row>
       <el-col :span="20" :offset="2">
         <el-tabs v-model="choiceName" :stretch="true">
@@ -74,7 +73,7 @@
                   </tr>
                   <tr style="border-bottom: 1px solid #DCDFE6;">
                     <td style="padding: 20px 10px;width: 20%;"><strong>绩效奖金</strong></td>
-                    <td style="padding: 20px 10px">{{ staff.salary }}</td>
+                    <td style="padding: 20px 10px">{{ staff.performance }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -96,7 +95,7 @@
     data() {
       return {
         fit: 'fill',
-        url: '',
+        url: 'https://pic4.zhimg.com/80/v2-a25b9f8cda0aab9922e61201efbb03ab_hd.jpg',
         choiceName: 'first',
         staff: {}
       }
