@@ -43,8 +43,8 @@
         return {
             logining: false,
             ruleForm: {
-                username: '',
-                password: '',
+                username: 'admin',
+                password: '123456',
             },
             rules: {
                 username: [{required: true, message: '请输入一个用户名', trigger: 'blur'}],
@@ -83,7 +83,7 @@
     created() {
       let cookie = Cookie.get('token');
       if (cookie){
-        this.$router.push({path: '/'})
+        this.$router.push({path: '/homepage'})
       }
     }
   };

@@ -4,7 +4,7 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-card class="box-card" style="height: 100px;" @click.native="gotoRouter('staffs')">
+          <el-card class="box-card" style="height: 100px;cursor:pointer" @click.native="gotoRouter('/staffs')">
             <el-col :span="10" style="padding-left: 0px;">
               <div class="total-frame" style="background: #409EFF">
                 <i class="fa fa-cube total-icon fa-3x"></i>
@@ -12,14 +12,14 @@
             </el-col>
             <el-col :span="14" style="padding: 25px;height:100px;">
               <div class="total-title">未处理事项</div>
-              <div class="total-value">200</div>
+              <div class="total-value">{{ untreated }}</div>
             </el-col>
           </el-card>
         </div>
       </el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-card class="box-card" style="height: 100px;" @click.native="gotoRouter('staffs')">
+          <el-card class="box-card" style="height: 100px;cursor:pointer" @click.native="gotoRouter('/staffs')">
             <el-col :span="10" style="padding-left: 0px;">
               <div class="total-frame" style="background: #01DF01">
                 <i class="fa fa-users total-icon fa-3x"></i>
@@ -27,14 +27,14 @@
             </el-col>
             <el-col :span="14" style="padding: 25px;height:100px;">
               <div class="total-title">总人数</div>
-              <div class="total-value">200</div>
+              <div class="total-value">{{ stafftotal }}</div>
             </el-col>
           </el-card>
         </div>
       </el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-card class="box-card" style="height: 100px;" @click.native="gotoRouter('staffs')">
+          <el-card class="box-card" style="height: 100px;cursor:pointer" @click.native="gotoRouter('/staffs')">
             <el-col :span="10" style="padding-left: 0px;">
               <div class="total-frame" style="background: #D7DF01">
                 <i class="fa fa-user-times total-icon fa-3x"></i>
@@ -42,14 +42,14 @@
             </el-col>
             <el-col :span="14" style="padding: 25px;height:100px;">
               <div class="total-title">近期离职人数</div>
-              <div class="total-value">200</div>
+              <div class="total-value">{{ leavetotal }}</div>
             </el-col>
           </el-card>
         </div>
       </el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-card class="box-card" style="height: 100px;" @click.native="gotoRouter('staffs')">
+          <el-card class="box-card" style="height: 100px;cursor:pointer" @click.native="gotoRouter('/staffs')">
             <el-col :span="10" style="padding-left: 0px;">
               <div class="total-frame" style="background: #F7819F">
                 <i class="fa fa-exclamation total-icon fa-3x"></i>
@@ -57,7 +57,7 @@
             </el-col>
             <el-col :span="14" style="padding: 25px;height:100px;">
               <div class="total-title">异常事项</div>
-              <div class="total-value">200</div>
+              <div class="total-value">{{ warning }}</div>
             </el-col>
           </el-card>
         </div>
@@ -68,15 +68,14 @@
           <div slot="header" class="clearfix">
             <i class="fa fa-flag"></i> <span>新入职员工</span>
             <span v-if="loading"><i class="fa fa-spinner fa-spin fa-fw"></i></span>
-            <span v-if="noMore"></span>
             <el-button style="float: right;" type="primary" size="mini" circle icon="fa fa-flag"></el-button>
           </div>
           <div style="height: 250px;overflow: auto">
-            <ul class="infinite-list" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
+            <ul class="infinite-list">
               <li v-for="i in regis" class="infinite-list-item">
                 <el-col :span="5" style="text-align: center">{{ i.name }}</el-col>
-                <el-col :span="10" style="text-align: center">{{ i.department }}</el-col>
-                <el-col :span="5" style="text-align: center">{{ i.date }}</el-col>
+                <el-col :span="10" style="text-align: center">{{ i.phone }}</el-col>
+                <el-col :span="5" style="text-align: center">{{ i.create_time }}</el-col>
                 <el-col :span="5" style="text-align: center">
                   <el-button icon="el-icon-d-arrow-right" circle size="small"></el-button>
                 </el-col>
@@ -90,7 +89,7 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <i class="fa fa-glass"></i> <span>员工数量</span>
-            <el-button style="float: right;" type="success" size="mini" circle icon="fa fa-glass"></el-button>
+            <el-button style="float: right;" type="success" size="mini" circle icon="fa fa-glass" @click="gotoRouter('/staffs')"></el-button>
           </div>
           <div>
             <el-col :span="24">
@@ -110,14 +109,13 @@
   export default {
     data() {
       return {
-        loading: false,
-        total: 100,
-        regis: [
-          {name: '甲', department: '运维管理组', date: '2018-11-12 05:03:03'},
-          {name: '乙', department: '运维管理组', date: '2018-11-12 05:03:03'},
-          {name: '丙', department: '运维管理组', date: '2018-11-12 05:03:03'},
-          {name: '丁', department: '运维管理组', date: '2018-11-12 05:03:03'},
-        ],
+        untreated: 0,
+        stafftotal: 0,
+        leavetotal: 0,
+        warning: 0,
+
+        loading: true,
+        regis: [],
         staffsOption: {
           title : {
             text: '人员分布',
@@ -173,27 +171,46 @@
         },
       }
     },
-    computed: {
-      noMore () {
-        return this.regis.length >= this.total
-      },
-      disabled () {
-        return this.loading || this.noMore
-      }
-    },
     methods: {
       gotoRouter(path) {
         this.$router.push({
           path: path
         })
       },
-      load () {
-        this.loading = true
-        setTimeout(() => {
-          this.regis.push({name: Math.floor((Math.random()*100)+1), department: '运维管理组', date: '2018-11-12 05:03:03'});
-          this.loading = false
-        }, 2000)
+      getnews () {
+        http(api.getnews, {}).then(res => {
+          this.regis = res.data;
+          this.loading = false;
+        }).catch(error => {
+          console.log(error);
+        })
+      },
+      getcard() {
+        http(api.getcard, {
+        }).then(res => {
+          this.untreated = res.data.untreated;
+          this.stafftotal = res.data.stafftotal;
+          this.leavetotal = res.data.leavetotal;
+          this.warning = res.data.warning;
+          this.staffsOption.series[0].data[0].value = res.data.stafftotal;
+          this.staffsOption.series[0].data[1].value = res.data.is_worker;
+          this.staffsOption.series[0].data[2].value = res.data.not_worker;
+          this.staffsOption.series[0].data[3].value = res.data.untreated;
+        }).catch(error => {
+          console.log(error);
+        })
       }
+    },
+    mounted() {
+      setTimeout(() => {
+        this.getnews();
+      }, 2000)
+      this.getcard();
+      setInterval(() => {
+        this.loading = true;
+        this.getnews();
+        this.getcard();
+      }, 10000);
     }
   }
 </script>

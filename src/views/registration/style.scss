@@ -1,5 +1,14 @@
-table,table tr th, table tr td { border:1px solid #edeff0; }
-table { width: 100%; min-height: 25px; line-height: 25px; text-align: center; border-collapse: collapse; padding:2px;}  
+table,table tr th, table tr td { 
+    border:1px solid #d8dbdd; 
+}
+table { 
+    width: 100%; 
+    min-height: 25px; 
+    line-height: 25px; 
+    text-align: center; 
+    border-collapse: collapse; 
+    padding:2px;
+}  
 .el-input /deep/ .el-input__inner {
     width: 100%;
     overflow:hidden;

@@ -65,6 +65,7 @@
 </template>
 
 <script>
+	import Cookie from '@/common/js/utils/cookie';
 	export default {
 		data() {
 			return {
@@ -93,7 +94,7 @@
 				this.$confirm('确认退出吗?', '提示', {
 					//type: 'warning'
 				}).then(() => {
-					sessionStorage.removeItem('user');
+					Cookie.set('token','',0)
 					_this.$router.push('/login');
 				}).catch(() => {
 				});

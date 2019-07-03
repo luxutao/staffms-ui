@@ -49,6 +49,7 @@ export default new Router({
       component: NavHome,
       iconCls: 'fa fa-home',
       leaf: true,
+      redirect: { path: "/homepage" },
       children: [
         { path: '/homepage', component: Homepage, name: '首页'}
       ]

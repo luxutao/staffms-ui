@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 let host = '';
-
+// let host = 'http://demo.staffms.animekid.cn';
 
 export default {
     login:host + '/api/auth/login',
@@ -30,4 +30,8 @@ export default {
     staffRegistration:host + '/api/staff/staffRegistration',
     getStaffs:host + '/api/staff/getStaffs',
     getChartdata:host + '/api/staff/getChartdata',
+    getcard:host + '/api/staff/getcard',
+    getnews:host + '/api/staff/getnews',
+    
+
 }

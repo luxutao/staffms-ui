@@ -111,6 +111,10 @@
           type: 'warning',
           center: true
         }).then(() => {
+          if (row.id == 1) {
+            this.$message({type:"error",message:"admin用户禁止删除"});
+            return false;
+          }
           http(api.deluser, {
             headers:{'Content-Type': 'application/json; charset=UTF-8'},
             type: 'post',

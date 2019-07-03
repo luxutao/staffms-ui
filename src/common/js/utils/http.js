@@ -48,6 +48,7 @@ function http (url, options) {
           type: 'error'
         });
         reject(response.data.msg)
+        window.location.href = '/login'
       }else if(response.data.code == 204){
         Message({
           showClose: true,
