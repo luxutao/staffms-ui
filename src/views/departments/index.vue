@@ -54,29 +54,29 @@
         <el-form-item label="名称" prop="name" style="padding-bottom: 20px">
           <el-input v-model.number="addDepartForm.name"></el-input>
         </el-form-item>
+        <el-form-item label="部门等级" prop="level" style="padding-bottom: 20px">
+          <el-select v-model="addDepartForm.level" placeholder="请选择" filterable style="width: 100%" @change="changeParent">
+            <el-option v-for="level in levels" :key="level.id" :label="level.name" :value="level.id"></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="上级部门" prop="parent" style="padding-bottom: 20px">
-          <el-select v-model="addDepartForm.parent" placeholder="请选择" filterable>
+          <el-select v-model="addDepartForm.parent" :disabled="disabled" placeholder="请选择" filterable style="width: 100%">
             <el-option v-for="dep in alldeparts" :key="dep.id" :label="dep.name" :value="dep.id"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="管理人" prop="leader" style="padding-bottom: 20px">
-          <el-select v-model="addDepartForm.leader" placeholder="请选择" filterable>
+          <el-select v-model="addDepartForm.leader" placeholder="请选择" filterable style="width: 100%">
             <el-option v-for="staff in staffs" :key="staff.id" :label="staff.name" :value="staff.id"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="VP" prop="vp" style="padding-bottom: 20px">
-          <el-select v-model="addDepartForm.vp" placeholder="请选择" filterable>
+          <el-select v-model="addDepartForm.vp" placeholder="请选择" filterable style="width: 100%">
             <el-option v-for="staff in staffs" :key="staff.id" :label="staff.name" :value="staff.id"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="HRBP" prop="hrbp" style="padding-bottom: 20px">
-          <el-select v-model="addDepartForm.hrbp" placeholder="请选择" filterable>
+        <el-form-item label="HRBP" prop="hrbp">
+          <el-select v-model="addDepartForm.hrbp" placeholder="请选择" filterable style="width: 100%">
             <el-option v-for="staff in staffs" :key="staff.id" :label="staff.name" :value="staff.id"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="等级" prop="level">
-          <el-select v-model="addDepartForm.level" placeholder="请选择" filterable>
-            <el-option v-for="level in levels" :key="level.id" :label="level.name" :value="level.id"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -118,6 +118,7 @@
         },
         departTree: [],
 
+        disabled: false,
         addDepartForm: {
           name: '',
           parent: '',
@@ -137,6 +138,12 @@
       }
     },
     methods: {
+      changeParent(v) {
+        if (v ==1 ){
+          this.disabled = true;
+          this.addDepartForm.parent = 0;
+        }
+      },
       cellStyle({row, column, rowIndex, columnIndex}){
         if(row.staffcounts == 0 && columnIndex == 8){
           return 'color: red'
@@ -179,7 +186,7 @@
         http(api.getdeparts, {
           params: {size:10000000,page:1}
         }).then(res => {
-          this.alldeparts = res.data;
+          this.alldeparts = res.data.data;
           this.alldeparts.unshift({
             id: 0, name: '无'
           })

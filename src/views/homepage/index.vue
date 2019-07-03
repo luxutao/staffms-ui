@@ -113,6 +113,7 @@
         stafftotal: 0,
         leavetotal: 0,
         warning: 0,
+        timer: null,
 
         loading: true,
         regis: [],
@@ -199,6 +200,13 @@
         }).catch(error => {
           console.log(error);
         })
+      },
+      startTimer() {
+        this.timer = setInterval(() => {
+          this.loading = true;
+          this.getnews();
+          this.getcard();
+        }, 10000);
       }
     },
     mounted() {
@@ -206,12 +214,11 @@
         this.getnews();
       }, 2000)
       this.getcard();
-      setInterval(() => {
-        this.loading = true;
-        this.getnews();
-        this.getcard();
-      }, 10000);
-    }
+      this.startTimer();
+    },
+    destroyed: function () {
+      window.clearInterval(this.timer);
+    },
   }
 </script>
 
