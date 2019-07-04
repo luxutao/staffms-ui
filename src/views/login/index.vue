@@ -67,14 +67,13 @@
                       }
                     }).then(res => {
                       this.logining = false;
-                      console.log(res);
                       this.$router.push({path: '/'})
                     }).catch(err => {
                       this.logining = false;
                       console.log(err);
                     })
                 }else{
-                    console.log('error submit!');
+                    console.log('表单验证失败');
                     return false;
                 }
             })

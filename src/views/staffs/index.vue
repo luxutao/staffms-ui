@@ -16,13 +16,13 @@
     </el-col>
     <el-table :data="staffsTable" border style="width: 100%">
       <el-table-column align="center" prop="id" label="员工ID" width="120"></el-table-column>
-      <el-table-column align="center" prop="name" label="姓名" width="180"></el-table-column>
-      <el-table-column align="center" prop="number" label="员工编号" width="180"></el-table-column>
-      <el-table-column align="center" prop="email" label="邮箱" width="180"></el-table-column>
+      <el-table-column align="center" prop="name" label="姓名" width="120"></el-table-column>
+      <el-table-column align="center" prop="number" label="员工编号" width="120"></el-table-column>
+      <el-table-column align="center" prop="email" label="邮箱" width="250"></el-table-column>
       <el-table-column align="center" prop="job.name" label="职位" width="180"></el-table-column>
-      <el-table-column align="center" prop="company.name" label="所属公司" width="180"></el-table-column>
+      <el-table-column align="center" prop="company.name" label="所属公司" width="360"></el-table-column>
       <el-table-column align="center" prop="department.name" label="部门" width="180"></el-table-column>
-      <el-table-column align="center" prop="leader" label="直属上级" width="180"></el-table-column>
+      <el-table-column align="center" prop="leader" label="直属上级" width="120"></el-table-column>
       <el-table-column align="center" label="操作">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="showDetail(scope.row)">查看详情</el-button>
@@ -76,7 +76,7 @@
         this.$router.push({
           name: '员工详情',
           query: {
-            sid: row.id
+            id: row.id
           }
         })
       }

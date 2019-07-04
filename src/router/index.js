@@ -63,6 +63,7 @@ export default new Router({
         { path: '/staffs', component: Staff, name: '员工管理' },
         { path: '/staffsdis', component: Staffdis, name: '员工分布' },
         { path: '/staffsdetail', component: Staffdetail, name: '员工详情', hidden: true },
+        { path: '/regishr', component: Registration, name: '入职登记表HR', hidden: true },
       ]
     },
     {

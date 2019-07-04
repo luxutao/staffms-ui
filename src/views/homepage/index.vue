@@ -68,7 +68,7 @@
           <div slot="header" class="clearfix">
             <i class="fa fa-flag"></i> <span>新入职员工</span>
             <span v-if="loading"><i class="fa fa-spinner fa-spin fa-fw"></i></span>
-            <el-button style="float: right;" type="primary" size="mini" circle icon="fa fa-flag"></el-button>
+            <el-button style="float: right;" type="primary" size="mini" circle icon="fa fa-refresh" @click="refresh"></el-button>
           </div>
           <div style="height: 250px;overflow: auto">
             <ul class="infinite-list">
@@ -77,7 +77,7 @@
                 <el-col :span="10" style="text-align: center">{{ i.phone }}</el-col>
                 <el-col :span="5" style="text-align: center">{{ i.create_time }}</el-col>
                 <el-col :span="5" style="text-align: center">
-                  <el-button icon="el-icon-d-arrow-right" circle size="small"></el-button>
+                  <el-button icon="el-icon-d-arrow-right" circle size="small" @click="gotoRouter('/regishr?id=' + i.id )"></el-button>
                 </el-col>
               </li>
             </ul>
@@ -173,6 +173,11 @@
       }
     },
     methods: {
+      refresh() {
+        this.loading = true;
+        this.getnews();
+        this.getcard();
+      },
       gotoRouter(path) {
         this.$router.push({
           path: path
@@ -206,7 +211,7 @@
           this.loading = true;
           this.getnews();
           this.getcard();
-        }, 10000);
+        }, 600000);
       }
     },
     mounted() {

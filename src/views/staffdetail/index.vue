@@ -95,7 +95,7 @@
     data() {
       return {
         fit: 'fill',
-        url: 'https://pic4.zhimg.com/80/v2-a25b9f8cda0aab9922e61201efbb03ab_hd.jpg',
+        url: 'https://image.animekid.cn/images/2019/02/02/81fb6509f1dcd646de41a322e0c29006.th.jpg',
         choiceName: 'first',
         staff: {}
       }
@@ -104,7 +104,7 @@
       getstaff() {
         http(api.getStaffs, {
           params: {
-            sid: this.$route.query.sid
+            id: this.$route.query.id
           }
         }).then(res => {
           if (res.data.total == 0) {

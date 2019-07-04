@@ -28,10 +28,12 @@ export default {
     
     getEasystaffs:host + '/api/staff/getEasystaffs',
     staffRegistration:host + '/api/staff/staffRegistration',
+    staffhrRegistration:host + '/api/staff/staffhrRegistration',
     getStaffs:host + '/api/staff/getStaffs',
     getChartdata:host + '/api/staff/getChartdata',
     getcard:host + '/api/staff/getcard',
     getnews:host + '/api/staff/getnews',
-    
+    getStaffinfo:host + '/api/staff/getStaffinfo',
+    getRegisdata:host + '/api/staff/getRegisdata',
 
 }
