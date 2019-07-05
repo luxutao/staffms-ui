@@ -93,7 +93,7 @@
           </div>
           <div>
             <el-col :span="24">
-              <chart :options="staffsOption" style="height: 250px"></chart>
+              <chart :options="staffsOption" style="height: 250px;width: 100%;"></chart>
             </el-col>
           </div>
         </el-card>

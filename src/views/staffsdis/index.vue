@@ -27,7 +27,7 @@
     <el-col :span="11">
       <strong>部门分布</strong>
       <el-col :span="24">
-        <chart :options="departoption" :auto-resize="true"></chart>
+        <chart :options="departoption" style="width: 100%;"></chart>
       </el-col>
     </el-col>
     <el-col :span="1" :offset="1">
@@ -36,7 +36,7 @@
     <el-col :span="11">
       <strong>公司分布</strong>
       <el-col :span="24">
-        <chart :options="companyoption" :auto-resize="true"></chart>
+        <chart :options="companyoption"  style="width: 100%;"></chart>
       </el-col>
     </el-col>
   </section>
