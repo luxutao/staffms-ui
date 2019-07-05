@@ -35,5 +35,6 @@ export default {
     getnews:host + '/api/staff/getnews',
     getStaffinfo:host + '/api/staff/getStaffinfo',
     getRegisdata:host + '/api/staff/getRegisdata',
+    changeStaff:host + '/api/staff/changeStaff',
 
 }

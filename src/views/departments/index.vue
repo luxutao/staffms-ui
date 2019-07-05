@@ -139,7 +139,7 @@
     },
     methods: {
       changeParent(v) {
-        if (v ==1 ){
+        if (v == 1){
           this.disabled = true;
           this.addDepartForm.parent = 0;
         }
