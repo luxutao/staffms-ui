@@ -80,7 +80,15 @@
             </el-col>
           </el-tab-pane>
           <el-tab-pane label="考勤信息" name="third">考勤信息</el-tab-pane>
-          <el-tab-pane label="变更日志" name="fourth">变更日志</el-tab-pane>
+          <el-tab-pane label="变更日志" name="fourth">
+            <el-col :span="18" :offset="3">
+              <el-table :data="staff.log" style="width: 100%">
+                <el-table-column align="center" prop="id" label="序号" width="125"></el-table-column>
+                <el-table-column align="center" prop="message" label="操作日志" width="500"></el-table-column>
+                <el-table-column align="center" prop="operator" label="操作人" width="150"></el-table-column>
+              </el-table>
+            </el-col>
+          </el-tab-pane>
         </el-tabs>
       </el-col>
     </el-row>
