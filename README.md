@@ -2,6 +2,13 @@
 
 > A Vue.js project
 
+## Change Host
+
+```bash
+# change domain
+vi /src/api/index.js
+```
+
 ## Build Setup
 
 ``` bash
