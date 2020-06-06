@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 let host = '';
-// let host = 'http://demo.staffms.animekid.cn';
+// let host = 'http://demo.staffms.123m.me';
 
 export default {
     login:host + '/api/auth/login',
